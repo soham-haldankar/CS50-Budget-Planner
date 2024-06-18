@@ -1,0 +1,94 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 1000px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #009879;
+    border-collapse: collapse;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+
+.expense {
+    border-bottom: 1px solid #dddddd;
+    background-color: #EB5E4F;
+}
+
+.income {
+    border-bottom: 1px solid #dddddd;
+    background-color: #A1FB8E;
+}
+
+/*.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}*/
+
+/*.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}*/
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 130px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}

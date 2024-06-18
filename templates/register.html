@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-floating mb-3" style="width:220px; margin: 0 auto;">
+            <input type="text" class="form-control" id="usernam" placeholder="Username" name="username">
+            <label for="floatingInput">Username</label>
+        </div>
+
+        <div class="form-floating" style="width:220px; margin: 0 auto;">
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" autocomplete="off">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <br>
+        <div class="form-floating" style="width:220px; margin: 0 auto;">
+            <input type="password" class="form-control" id="confirmation" placeholder="Confirm Password" name="confirmation" autocomplete="off">
+            <label for="floatingPassword">Confirm Password</label>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <br>
+    {% if string is defined %}
+    <p>{{ string }}</p>
+    {% endif %}
+{% endblock %}

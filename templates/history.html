@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    var expensedict = {{ expense | tojson | safe}};
+    var incomedict = {{ income | tojson | safe}};
+
+    var expenselist = [['Category', 'Amount']];
+    var incomelist = [['Category', 'Amount']];
+
+    expensedict.forEach(function(item) {
+        expenselist.push([item.category, item.amount]);
+    });
+    incomedict.forEach(function(item) {
+        incomelist.push([item.category, item.amount]);
+    });
+
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawExpense);
+    google.charts.setOnLoadCallback(drawIncome);
+
+    function drawExpense()
+    {
+        var data = google.visualization.arrayToDataTable(expenselist);
+
+        // Set Options
+        var options = {
+        title: 'Expense'
+        };
+
+        // Draw
+        var chart = new google.visualization.PieChart(document.getElementById('expense'));
+        chart.draw(data, options);
+
+    }
+
+    function drawIncome()
+    {
+        var data = google.visualization.arrayToDataTable(incomelist);
+
+        // Set Options
+        var options = {
+        title: 'Income'
+        };
+
+        // Draw
+        var chart = new google.visualization.PieChart(document.getElementById('income'));
+        chart.draw(data, options);
+
+    }
+</script>
+<div class="mb-3">
+    <h1>Budget History</h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Note</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in info %}
+                {% if row.type == "expense" %}
+                    <tr class="expense">
+                        <td>{{ row.category }}</td>
+                        <td>{{ row.date }}</td>
+                        <td>{{ row.notes }}</td>
+                        <td>-{{ row.amount }}</td>
+                    </tr>
+                {% else %}
+                    <tr class="income">
+                        <td>{{ row.category }}</td>
+                        <td>{{ row.date }}</td>
+                        <td>{{ row.notes }}</td>
+                        <td>{{ row.amount }}</td>
+                    </tr>
+                {% endif %}
+        {% endfor %}
+            <br>
+        </tbody>
+    </table>
+</div>
+<hr style="color: #009879; height: 2px;">
+<div class="mb-3">
+    <h4>Total Income = {{ total_inco }}</h4>
+    <h4>Total Expense = {{ total_exp }}</h4>
+</div>
+
+<form action="/history" method="post" class="form-group">
+    <h3>Select Month for Budget Analysis</h3>
+    <div class="mb-3" style="width:220px; margin: 0 auto;">
+        <br>
+        <select multiple="" class="form-select" id="month" name="month">
+            {% for i in range(1, 13) %}
+                <option value={{ i }}>{{ i }}</option>
+            {% endfor %}
+          </select>
+        <br>
+        <button class="btn btn-primary" type="submit">Select</button>
+        <br>
+    </div>
+</form>
+
+<br>
+<div id="expense" style="width: 100%; height: 400px;"></div>
+
+<div id="income" style="width: 100%; height: 400px;"></div>
+
+
+{% endblock %}

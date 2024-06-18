@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Category
+{% endblock %}
+
+{% block main %}
+    <h1>ADD Category</h1>
+    <br>
+    <form action="/category" method="post">
+        <br>
+        <div class="form-group" style="width:220px; margin: 0 auto;">
+            <select class="form-select" id="key" name="key" required>
+                <option value='expense'>Expense</option>
+                <option value='income'>Income</option>
+              </select>
+        </div>
+        <br>
+        <div class="form-floating mb-3" style="width:220px; margin: 0 auto;">
+            <input type="text" class="form-control" id="category" placeholder="Category" name="category" required>
+            <label for="floatingInput">Category</label>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit">Add Category</button>
+    </form>
+{% endblock %}
