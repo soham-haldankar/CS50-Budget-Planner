@@ -4,7 +4,7 @@
 Expense Ease is a basic budget tracker that tracks the users expense and income. It also gives a monthly anlaysis of the users income and expense through pie diagrams. The user can add their expense and income using various categories. They are also given the ability to add their own personal categories.
 ## Database
 I created a database called budget.db that contains three tables. Users which stores the login information of the user. For the password hash method was used. Also the id of the users is autoincremented.
-The info table conatains the information about all the income and expense the user does. The expense and income each have different categories.
+The info table contains the information about all the income and expense the user does. The expense and income each have different categories.
 The third table made was categories. It keeps track of the categories a user has each in income and expense. As I have included the ability for users to include their own category I had to make a new table to ensure that a category added by one user does not add as a category in another users interface.
 ## Register
 In register, I allowed the user to enter their basic username and password details along with some basic checks. If the entered data passes the checks, the user information is added into the users table. If it does not pass any condition then the problem gets printed on the same page as it is defined in the register.html page where the "if var is defined" syntax is used. Also they are added into the category table in which each user gets the pre decided categories to use. We also give the current session the value of the user's id.
